@@ -1,7 +1,7 @@
 ---
 name: Review Agent
 description: Perform comprehensive code review against GitHub issue requirements and best practices
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'github/*', 'agent', 'todo']
+tools: [ 'insert_edit_into_file', 'replace_string_in_file', 'create_file', 'apply_patch', 'run_in_terminal', 'get_terminal_output', 'get_errors', 'show_content', 'open_file', 'list_dir', 'read_file', 'file_search', 'grep_search', 'validate_cves', 'run_subagent', 'semantic_search' ]
 handoffs:
   - label: Fix Code Issues
     agent: implementation
