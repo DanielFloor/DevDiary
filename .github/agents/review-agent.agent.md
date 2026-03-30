@@ -4,19 +4,19 @@ description: Perform comprehensive code review against GitHub issue requirements
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'github/*', 'agent', 'todo']
 handoffs:
   - label: Fix Code Issues
-    agent: Implementation Agent
+    agent: implementation
     prompt: The code review found issues that need to be fixed. Please address the following from the review - code quality issues identified, pattern violations, missing error handling, and performance concerns. Fix all critical and major issues. Run linting checks after fixes. Then hand off back to the Test Agent to verify tests still pass.
     send: true
   - label: Improve Test Coverage
-    agent: Test Agent
+    agent: testing
     prompt: The code review found insufficient test coverage. Please address untested code paths identified in review, missing edge case tests, and missing error scenario tests. Add tests to reach the required coverage threshold and ensure all acceptance criteria have test coverage.
     send: true
   - label: Re-review After Changes
-    agent: Review Agent
+    agent: review-agent
     prompt: Changes have been made based on the previous review feedback. Please re-review the code to verify all issues have been addressed and provide an updated verdict.
     send: false
   - label: Create Pull Request
-    agent: agent
+    agent: Agent
     prompt: The code review has been approved. Create a pull request with a clear title summarizing the change, description linking to the GitHub issue, summary of changes made, and test coverage information.
     send: true
 ---

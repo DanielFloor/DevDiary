@@ -7,11 +7,11 @@ description: >
 tools: [vscode, execute, read, agent, edit, search, web, browser, todo]
 handoffs:
   - label: Implement the Plan
-    agent: Implementation Agent
+    agent: implementation
     prompt: Implement the feature based on the IMPLEMENTATION_PLAN.md that was just created. The plan contains overview with design decisions, context & references with code examples and patterns to follow, step-by-step implementation instructions, and validation gates to verify quality. Follow the plan exactly. Mirror the code patterns from referenced files. Run linting checks after implementation. Do NOT write tests - that will be handled by a separate agent.
     send: true
   - label: Refine the Plan
-    agent: Plan Agent
+    agent: task-planning
     prompt: The implementation plan needs refinement. Please review and improve it by adding more specific code examples, clarifying ambiguous sections, adding missing edge cases, and improving the confidence score.
     send: false
 ---

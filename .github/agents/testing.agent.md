@@ -9,7 +9,7 @@ description: >
 tools: [vscode, execute, read, edit, search, todo]
 handoffs:
   - label: Review Code and Tests
-    agent: Review Agent
+    agent: review-agent
     prompt: |
       Implementation and tests are complete. The implementation plan is in
       docs/implementation-plans/. HANDOFF.md in the same directory describes what was
@@ -18,7 +18,7 @@ handoffs:
       Provide verdict: Approved, Approved with Comments, or Changes Requested.
     send: true
   - label: Fix Implementation Bug
-    agent: Implementation Agent
+    agent: implementation
     prompt: |
       Tests have revealed a bug in the implementation. The failing test name, assertion,
       and the production code location are documented below. Fix only the production code —

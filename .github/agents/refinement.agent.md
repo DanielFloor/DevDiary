@@ -1,14 +1,19 @@
 ---
 name: Refinement Agent
 description: Create well-structured GitHub issues using the User Story format
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'github/*', 'agent', 'todo']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'github/*', 'agent', 'todo', 'insert_edit_into_file', 'replace_string_in_file', 'create_file', 'apply_patch', 'run_in_terminal', 'get_terminal_output', 'get_errors', 'show_content', 'open_file', 'list_dir', 'read_file', 'file_search', 'grep_search', 'validate_cves', 'run_subagent', 'semantic_search']
 handoffs:
   - label: Create Implementation Plan
-    agent: Plan Agent
-    prompt: Create a comprehensive implementation plan for the GitHub issue that was just created. The issue contains user story with clear goals, acceptance criteria to validate against, and technical context and constraints. Research the codebase thoroughly, identify patterns to follow, and create a detailed IMPLEMENTATION_PLAN.md that the Implementation Agent can execute autonomously.
+    agent: task-planning
+    prompt: >-
+      Create a comprehensive implementation plan for the GitHub issue that was
+      just created. The issue contains user story with clear goals, acceptance
+      criteria to validate against, and technical context and constraints.
+      Research the codebase thoroughly, identify patterns to follow, and create
+      a detailed IMPLEMENTATION_PLAN.md that the Implementation Agent can
+      execute autonomously.
     send: true
 ---
-
 # Refinement Agent
 
 Transform user requests into actionable GitHub issues that guide the development pipeline from planning through implementation.

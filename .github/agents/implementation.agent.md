@@ -9,7 +9,7 @@ description: >
 tools: [vscode, execute, read, edit, search, todo]
 handoffs:
   - label: Write Tests
-    agent: Test Agent
+    agent: testing
     prompt: |
       Implementation is complete. Read docs/implementation-plans/HANDOFF.md — it contains
       every file that was changed, the public contracts introduced, and the validation
@@ -17,7 +17,7 @@ handoffs:
       Target ≥80% coverage on every new/modified file.
     send: true
   - label: Request Plan Clarification
-    agent: Plan Agent
+    agent: task-planning
     prompt: |
       Implementation is blocked by an ambiguity in the plan. The exact issue is described
       in the blocker section below. Please revise the plan and re-save it before

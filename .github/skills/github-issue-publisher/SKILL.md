@@ -11,7 +11,7 @@ Use this skill to push an approved local issue draft to GitHub with the correct 
 
 - An approved draft issue file exists under `issues/` (produced by the `issue-draft-template` skill).
 - The GitHub MCP tool `github/issue_write` is available (`github/*` in the agent's tools list).
-- Repository context is known: `owner = JurreBrandsenInfoSupport`, `repo = studybuddy-workshop`.
+- Repository context is known: `owner = DanielFloor`, `repo = DevDiary`.
 
 ## Workflow
 
@@ -61,8 +61,8 @@ Before submitting, ensure the final label list:
 Call `github/issue_write` with the following arguments:
 
 ```
-owner:  JurreBrandsenInfoSupport
-repo:   studybuddy-workshop
+owner:  DanielFloor
+repo:   DevDiary
 title:  <extracted title>
 body:   <full draft markdown content>
 labels: <computed label list>
@@ -83,14 +83,14 @@ If the tool call fails, surface the error message to the user and suggest checki
 - The labels already exist in the repository (GitHub rejects unknown label names on creation).
 - The user has write access to the repository.
 
-## Label Reference for StudyBuddy+
+## Label Reference for DevDiary
 
 The following labels are expected to exist in the repository. Create missing ones before publishing if needed (use `github/label_create` if available, otherwise ask the user to create them manually):
 
 | Label name | Color | Description |
 |---|---|---|
-| `frontend` | `#0075ca` | Changes to the Next.js frontend |
-| `backend` | `#e4e669` | Changes to the .NET backend |
+| `frontend` | `#0075ca` | Changes to the React frontend |
+| `backend` | `#e4e669` | Changes to the Spring Boot backend |
 | `feature` | `#a2eeef` | New feature or request |
 | `bug` | `#d73a4a` | Something isn't working |
 | `enhancement` | `#84b6eb` | Improvement to an existing feature |
@@ -102,11 +102,11 @@ The following labels are expected to exist in the repository. Create missing one
 Given this draft excerpt:
 
 ```markdown
-# Add Pomodoro Timer to Task Cards
+# Add Export to Markdown for Diary Entries
 
 ## Technical Notes
-- **Frontend changes:** `task-card.tsx`, new `useTimer` hook
-- **Backend changes:** `POST /api/tasks/{id}/timer/start`, `POST /api/tasks/{id}/timer/stop`
+- **Frontend changes:** `DiaryEntry/index.tsx`, new `ExportButton` component
+- **Backend changes:** `GET /api/entries/{id}/export`, new `ExportService`
 ```
 
 The label list would be: `frontend`, `backend`, `feature`.
