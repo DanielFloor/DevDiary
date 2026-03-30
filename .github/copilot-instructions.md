@@ -113,3 +113,13 @@ pnpm dev
 - Date fields: `date` is `LocalDate` (ISO string `YYYY-MM-DD`), `createdAt`/`updatedAt` are `OffsetDateTime` — Jackson serialization configured in `JacksonConfig.java`
 - Tags are a many-to-many relationship — send full tag objects `{ name: "java" }` in requests, not just strings
 - Full-text search uses SQLite FTS5 on the `content` field — keep FTS index in sync on create/update/delete in the service layer
+
+## Architecture guardrails
+
+Before you propose or implement changes:
+
+- Read the arc42 documentation in `docs/arc42/`.
+- Treat it as the source of truth for constraints, decisions, and concepts.
+- If a request conflicts with the docs, do not "pick a side".
+  Explain the conflict and propose a change to the docs (ADR), the code, or both.
+
