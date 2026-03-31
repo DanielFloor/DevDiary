@@ -40,12 +40,12 @@ export default function FilterPanel({ onFilter }: FilterPanelProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-lg border border-gray-200 p-4 space-y-4">
-      <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Filters</h2>
+    <form onSubmit={handleSubmit} className="bg-white rounded-lg border border-gray-200 p-4 space-y-4 dark:bg-gray-800 dark:border-gray-700">
+      <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wide dark:text-gray-300">Filters</h2>
 
       {/* Projects multi-select dropdown */}
       <div>
-        <label className="block text-xs text-gray-500 mb-1.5">Project</label>
+        <label className="block text-xs text-gray-500 mb-1.5 dark:text-gray-400">Project</label>
         <MultiSelectDropdown
           options={activeProjects.map((p) => ({ value: p.name, label: p.name }))}
           selected={selectedProjects}
@@ -56,7 +56,7 @@ export default function FilterPanel({ onFilter }: FilterPanelProps) {
 
       {/* Tags multi-select dropdown */}
       <div>
-        <label className="block text-xs text-gray-500 mb-1.5">Tags</label>
+        <label className="block text-xs text-gray-500 mb-1.5 dark:text-gray-400">Tags</label>
         <MultiSelectDropdown
           options={activeTags.map((t) => ({ value: t.name, label: `#${t.name}` }))}
           selected={selectedTags}
@@ -67,22 +67,22 @@ export default function FilterPanel({ onFilter }: FilterPanelProps) {
 
       {/* Date range */}
       <div>
-        <label className="block text-xs text-gray-500 mb-1">From</label>
+        <label className="block text-xs text-gray-500 mb-1 dark:text-gray-400">From</label>
         <input
           type="date"
           value={from}
           onChange={(e) => setFrom(e.target.value)}
-          className="w-full border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
         />
       </div>
 
       <div>
-        <label className="block text-xs text-gray-500 mb-1">To</label>
+        <label className="block text-xs text-gray-500 mb-1 dark:text-gray-400">To</label>
         <input
           type="date"
           value={to}
           onChange={(e) => setTo(e.target.value)}
-          className="w-full border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
         />
       </div>
 
@@ -96,7 +96,7 @@ export default function FilterPanel({ onFilter }: FilterPanelProps) {
         <button
           type="button"
           onClick={handleClear}
-          className="flex-1 bg-gray-100 text-gray-700 text-sm rounded px-3 py-1.5 hover:bg-gray-200 transition-colors"
+          className="flex-1 bg-gray-100 text-gray-700 text-sm rounded px-3 py-1.5 hover:bg-gray-200 transition-colors dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
         >
           Clear
         </button>
