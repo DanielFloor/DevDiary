@@ -55,6 +55,11 @@ Design decisions:
 - **`App.tsx` wrapping order**: `<ThemeProvider>` must be the outermost element of the return value.
   The existing structure is `<div className="min-h-screen ...">` — this div becomes the immediate
   child of `<ThemeProvider>`, not replaced by it.
+- **Sticky header**: the issue's Technical Notes say "introduce a minimal sticky `<header>` (if one
+  does not already exist)". The current `<header>` in `App.tsx` has **no** `sticky top-0` classes.
+  Without them the toggle scrolls off-screen on long pages, defeating the acceptance criterion
+  "visible in the top-right corner of every page". Phase 2 must add `sticky top-0 z-10` to the
+  `<header>` element in addition to the ThemeToggle wiring.
 - After Task 4, `App.tsx`'s own classes (`bg-gray-50`, `bg-white`, `border-gray-200`) will receive
   `dark:` variants — Task 3 does not need to add those. Keep this task focused on wiring only.
 
@@ -121,7 +126,11 @@ header's right-side navigation area.
    import ThemeToggle from './components/ThemeToggle'
    ```
 2. Wrap the entire return value in `<ThemeProvider>...</ThemeProvider>`.
-3. In the header, the current right side is:
+3. Add `sticky top-0 z-10` to the existing `<header>` element so the toggle remains visible
+   while the user scrolls on long pages (e.g., DiaryEntry). The class string becomes:
+   `"bg-white border-b border-gray-200 px-6 py-4 sticky top-0 z-10"`.
+   (Task 4 will later append `dark:` variants to the same element — do not add those here.)
+4. In the header, the current right side is:
    ```tsx
    <nav className="flex items-center gap-4 text-sm text-gray-500">
      ...NavLinks...
@@ -137,6 +146,8 @@ header's right-side navigation area.
    </div>
    ```
    This preserves existing nav layout and appends the toggle button to the right of the nav links.
+
+5. Export `App` as before (default export unchanged).
 
 **Validation rules:**
 None beyond framework defaults.
@@ -178,6 +189,7 @@ None beyond framework defaults.
 | Acceptance criterion (from issue)                                            | Covered by phase(s) |
 |------------------------------------------------------------------------------|---------------------|
 | A theme toggle button is visible in the top-right corner of every page       | Phase 2             |
+| Header is sticky so the toggle persists while scrolling long pages           | Phase 2             |
 | Button displays Sun icon when dark, Moon when light                          | Phase 1             |
 | Clicking the button switches between light and dark mode immediately         | Phase 1 + 2         |
 | Toggle button is accessible (has `aria-label` describing the current action) | Phase 1             |
@@ -194,6 +206,7 @@ None beyond framework defaults.
 - [ ] `aria-label` says `"Switch to light mode"` when dark, `"Switch to dark mode"` when light
 - [ ] Button has appropriate hover/focus styles including `dark:` variants
 - [ ] `App.tsx` imports and uses `ThemeProvider` to wrap the entire component tree
+- [ ] `<header>` element has `sticky top-0 z-10` classes added (so toggle stays visible on scroll)
 - [ ] `ThemeToggle` renders inside the header to the right of the existing nav links
 - [ ] No new npm packages added (`lucide-react` was already in `package.json`)
 - [ ] `pnpm build` passes with no errors
