@@ -3,17 +3,18 @@ name: Implementation Agent
 description: >
   Implements exactly one phase from a task planning document. Writes production code only
   (NO tests — tests are always written by the Test Agent). Writes a phase summary after
-  each phase. On the final phase, writes a task summary and HANDOFF.md, then invokes
-  the Test Agent. Invoke once per phase with feature name, task number, and phase number.
+  each phase. On the final phase, writes a task summary, then invokes the Test Agent.
+  Invoke once per phase with feature name, task number, and phase number.
 tools: [ 'insert_edit_into_file', 'replace_string_in_file', 'create_file', 'apply_patch', 'run_in_terminal', 'get_terminal_output', 'get_errors', 'show_content', 'open_file', 'list_dir', 'read_file', 'file_search', 'grep_search', 'validate_cves', 'run_subagent', 'semantic_search' ]
 handoffs:
   - label: Write Tests
     agent: testing
     prompt: '|'
-    Implementation is complete. Read docs/planning/{issue-dir}/tasks/task{N}/HANDOFF.md: ''
-    — it contains every file that was changed, the public contracts introduced, and the: ''
-    validation gates that already passed. Use it as your sole source of truth for what: ''
-    to test. Target ≥80% coverage on every new/modified file.: ''
+    Implementation is complete. The task summary files are in: ''
+    docs/planning/{issue-dir}/tasks/ — each task{N}/summary.md describes every file: ''
+    that was changed, the public contracts introduced, and any known risks. Use these: ''
+    as your source of truth for what to test. Target ≥80% coverage on every new/modified: ''
+    file.: ''
     send: true
   - label: Request Plan Clarification
     agent: task-planning
@@ -35,7 +36,6 @@ Your output artefacts per phase are:
 On the **final phase** (or single-phase task), additionally:
 
 3. A task summary (`summary.md`).
-4. A `HANDOFF.md` checkpoint that the Test Agent reads.
 
 ---
 
@@ -56,7 +56,6 @@ Ask for all three in a single message if any are missing:
   I'm here" improvements.
 - **Just-in-time context** — read only the files needed for the current phase. Do not pre-load the entire codebase.
 - **Fail fast** — run the compile check after implementing. Do not accumulate errors.
-- **Write the handoff before signing off** — the Test Agent is blocked until it exists.
 
 ---
 
@@ -69,7 +68,7 @@ Read `docs/planning/{issue-dir}/tasks/task{N}/planning.md` in full. Extract and 
 - The target phase's **files to create/modify**, **implementation steps**, **field mappings**, **validation rules**
 - **Key References** table → file paths to read just-in-time
 - **Validation Gates** → commands and their passing criteria
-- **Completion Checklist** → items to confirm before writing the handoff
+- **Completion Checklist** → items to confirm before writing the summary
 - Total phase count → to know whether this is the final phase
 
 Do not proceed until you fully understand the scope of the requested phase.
@@ -168,7 +167,7 @@ If the task has only one phase, skip this step.
 If this is the last phase for the task (or the task has only one phase):
 
 - Invoke the **Write Tests** handoff.
-- Provide the feature name and task number so the Test Agent can locate `HANDOFF.md`.
+- Provide the feature name and task number so the Test Agent can locate the `summary.md` files.
 - Wait for the Test Agent to complete before writing the task summary.
 - If the Test Agent reports failures it cannot resolve, surface them to the user.
 
@@ -211,41 +210,6 @@ State "None" if no new decisions were made.}
   State "None" if no documentation updates are needed.}
 ```
 
-### Step 10 — Write HANDOFF.md *(final phase or single-phase tasks only)*
-
-Save `docs/planning/{issue-dir}/tasks/task{N}/HANDOFF.md`:
-
-```markdown
-# Implementation Handoff — Task {N}: {Task Title}
-
-## Status
-All validation gates passed. Ready for Test Agent.
-
-## Changed Files
-| File | Type | Purpose |
-|------|------|---------|
-| path/to/file.java | created / modified | one-line description |
-
-## Public Contracts Introduced
-
-{List every new method signature, API endpoint, type, or interface that tests must cover.
-Include exact names, parameters, and return types.}
-
-## Validation Gates Passed
-| Command | Result |
-|---------|--------|
-| mvn compile | ✅ 0 errors |
-| pnpm exec tsc --noEmit | ✅ 0 errors |
-
-## Patterns in Use
-
-{Reference the Key Reference files whose patterns were mirrored. The Test Agent should
-read these to understand the testing conventions already in place.}
-
-## Known Risks / Edge Cases
-
-{Anything the Test Agent should pay special attention to.}
-```
 
 ---
 
@@ -346,7 +310,7 @@ You are done — and must trigger the **Write Tests** handoff — when (final ph
 3. The compile check passes with zero errors.
 4. Every item in the planning document's Completion Checklist is done.
 5. `phase{N}-summary.md` files exist for all intermediate phases.
-6. `summary.md` and `HANDOFF.md` are written and accurate.
+6. `summary.md` is written and accurate.
 
 ---
 

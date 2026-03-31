@@ -31,7 +31,7 @@ Perform a comprehensive code review of implemented features. Verify the implemen
 
 You will receive:
 1. **GitHub Issue** - Contains description, acceptance criteria, and requirements
-2. **Implementation Plan** (`IMPLEMENTATION_PLAN_*.md`) - Contains design decisions and implementation details
+2. **Task summaries** (`docs/planning/{issue-dir}/tasks/task*/summary.md`) - Describe what was implemented, what contracts were introduced, and any known risks per task
 3. **Code Changes** - The files created/modified by the Implementation Agent
 4. **Tests** - The test files created by the Test Agent
 
@@ -45,7 +45,7 @@ You will receive:
   - Acceptance criteria (AC)
   - Any requirements from comments
   - Out-of-scope items mentioned
-- Read the **Implementation Plan** for design decisions
+- Read all **task summary files** (`docs/planning/{issue-dir}/tasks/task*/summary.md`) for implementation context, design decisions, and known risks
 - Create review checklist using `#tool:todo`
 
 ### Step 2: Verify Acceptance Criteria Coverage
