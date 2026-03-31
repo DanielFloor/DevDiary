@@ -5,14 +5,14 @@ description: >
   per-task HANDOFF.md as its primary source of truth — not the full requirements document.
   Does NOT modify production code (it can flag bugs back to the Implementation Agent).
   Targets ≥80% coverage on every new/modified file before handing off to the Review Agent.
-  Invoke with feature name and task number.
+  Invoke with issue directory ({N}-{feature-name} format) and task number.
 tools: [ 'insert_edit_into_file', 'replace_string_in_file', 'create_file', 'apply_patch', 'run_in_terminal', 'get_terminal_output', 'get_errors', 'show_content', 'open_file', 'list_dir', 'read_file', 'file_search', 'grep_search', 'validate_cves', 'run_subagent', 'semantic_search' ]
 handoffs:
   - label: Review Code and Tests
     agent: review-agent
     prompt: '|'
     Implementation and tests are complete. The task planning document is in: ''
-    docs/planning/{feature-name}/tasks/task{N}/planning.md. HANDOFF.md in the same: ''
+    docs/planning/{issue-dir}/tasks/task{N}/planning.md. HANDOFF.md in the same: ''
     directory describes what was changed and what contracts were introduced. Tests have: ''
     been written and coverage meets the ≥80% target. Verify acceptance criteria, pattern: ''
     compliance, and coverage. Provide verdict:
@@ -36,10 +36,10 @@ You write tests. You do **not** modify production code.
 
 Ask for both in a single message if either is missing:
 
-- **Feature name** (kebab-case, e.g. `dark-mode-toggle`)
+- **Issue directory** (`{N}-{feature-name}` format, e.g. `1-dark-mode-toggle`)
 - **Task number** (integer, e.g. `2`)
 
-Your primary input is `docs/planning/{feature-name}/tasks/task{N}/HANDOFF.md` — not the
+Your primary input is `docs/planning/{issue-dir}/tasks/task{N}/HANDOFF.md` — not the
 full requirements document. The handoff contains everything you need: what changed, what
 contracts were introduced, and which patterns were used.
 
@@ -63,7 +63,7 @@ contracts were introduced, and which patterns were used.
 
 ### Step 1 — Read the handoff
 
-Read `docs/planning/{feature-name}/tasks/task{N}/HANDOFF.md` in full.
+Read `docs/planning/{issue-dir}/tasks/task{N}/HANDOFF.md` in full.
 
 Extract and hold:
 - **Changed files** → the exact set you must achieve coverage on

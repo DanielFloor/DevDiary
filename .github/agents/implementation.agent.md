@@ -10,7 +10,7 @@ handoffs:
   - label: Write Tests
     agent: testing
     prompt: '|'
-    Implementation is complete. Read docs/planning/{feature-name}/tasks/task{N}/HANDOFF.md: ''
+    Implementation is complete. Read docs/planning/{issue-dir}/tasks/task{N}/HANDOFF.md: ''
     — it contains every file that was changed, the public contracts introduced, and the: ''
     validation gates that already passed. Use it as your sole source of truth for what: ''
     to test. Target ≥80% coverage on every new/modified file.: ''
@@ -43,7 +43,7 @@ On the **final phase** (or single-phase task), additionally:
 
 Ask for all three in a single message if any are missing:
 
-- **Feature name** (kebab-case, matching the issue file name, e.g. `dark-mode-toggle`)
+- **Issue directory** (`{N}-{feature-name}` format, e.g. `1-dark-mode-toggle`)
 - **Task number** (integer, e.g. `2`)
 - **Phase number** (integer, e.g. `3`)
 
@@ -64,7 +64,7 @@ Ask for all three in a single message if any are missing:
 
 ### Step 1 — Load the planning document and locate the phase
 
-Read `docs/planning/{feature-name}/tasks/task{N}/planning.md` in full. Extract and hold:
+Read `docs/planning/{issue-dir}/tasks/task{N}/planning.md` in full. Extract and hold:
 
 - The target phase's **files to create/modify**, **implementation steps**, **field mappings**, **validation rules**
 - **Key References** table → file paths to read just-in-time
@@ -144,7 +144,7 @@ or skipping.
 
 ### Step 7 — Write phase summary *(multi-phase tasks only)*
 
-If the task has more than one phase, save `docs/planning/{feature-name}/tasks/task{N}/phase{N}-summary.md`:
+If the task has more than one phase, save `docs/planning/{issue-dir}/tasks/task{N}/phase{N}-summary.md`:
 
 ```markdown
 # Phase {N} Summary — {Phase Title}
@@ -174,7 +174,7 @@ If this is the last phase for the task (or the task has only one phase):
 
 ### Step 9 — Write task summary *(final phase or single-phase tasks only)*
 
-Save `docs/planning/{feature-name}/tasks/task{N}/summary.md`:
+Save `docs/planning/{issue-dir}/tasks/task{N}/summary.md`:
 
 ```markdown
 # Task {N} Summary — {Task Title}
@@ -213,7 +213,7 @@ State "None" if no new decisions were made.}
 
 ### Step 10 — Write HANDOFF.md *(final phase or single-phase tasks only)*
 
-Save `docs/planning/{feature-name}/tasks/task{N}/HANDOFF.md`:
+Save `docs/planning/{issue-dir}/tasks/task{N}/HANDOFF.md`:
 
 ```markdown
 # Implementation Handoff — Task {N}: {Task Title}
@@ -354,7 +354,7 @@ You are done — and must trigger the **Write Tests** handoff — when (final ph
 
 ```
 ## Implementation Sign-off
-- Feature: {feature-name}
+- Issue directory: {issue-dir}
 - Task: {N}, Phase: {N}
 - Files changed: {list}
 - Compile check: passed

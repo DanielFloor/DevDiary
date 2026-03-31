@@ -16,7 +16,8 @@ the task-planning and implementation agents.
 
 1. Gather missing requirements before drafting if the request is ambiguous.
 2. Draft the issue in markdown with the exact section order from this skill.
-3. Save the draft under `issues/` with a short kebab-case name.
+3. Save the draft as `docs/planning/{feature-name}/issue.md` where `{feature-name}` is a short
+   kebab-case name (e.g. `dark-mode-toggle`). Create the directory if it does not exist.
 4. Present the draft to the user for approval before creating a GitHub issue.
 
 ## Title Rules

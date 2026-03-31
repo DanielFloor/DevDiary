@@ -75,14 +75,16 @@ that calls `toggleTheme()` and shows the correct icon for the current theme.
 2. Import `useTheme` from `'../../context/ThemeContext'`.
 3. In the component body: destructure `{ theme, toggleTheme }` from `useTheme()`.
 4. Render a `<button>` element with:
-  - `onClick={toggleTheme}`
-  - `aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}`
-  - `className`:
-    ```
-    p-2 rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-100
-    dark:text-gray-400 dark:hover:text-gray-100 dark:hover:bg-gray-800
-    transition-colors
-    ```
+
+- `onClick={toggleTheme}`
+- `aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}`
+- `className`:
+  ```
+  p-2 rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-100
+  dark:text-gray-400 dark:hover:text-gray-100 dark:hover:bg-gray-800
+  transition-colors
+  ```
+
 5. Inside the button: render `<Sun size={18} />` when `theme === 'dark'`, `<Moon size={18} />`
    when `theme === 'light'`.
 6. Export as default.

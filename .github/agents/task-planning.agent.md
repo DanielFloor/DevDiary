@@ -33,14 +33,16 @@ it needs — no more, no less.
 
 Ask for both in a single message if either is missing:
 
-- **Feature name** (kebab-case, matching the issue file name, e.g. `dark-mode-toggle`)
+- **Issue directory** (`{N}-{feature-name}` format, matching the planning directory name, e.g.
+  `1-dark-mode-toggle`)
 - **Task number** (integer, e.g. `2`)
 
 ## Execution loop
 
 ### Step 1 — Read the issue and locate the task
 
-Read the relevant issue file from the `issues/` directory. Extract:
+Read `docs/planning/{issue-dir}/issue.md` (where `{issue-dir}` is the `{N}-{feature-name}`
+directory, e.g. `docs/planning/1-dark-mode-toggle/issue.md`). Extract:
 - What feature must be built (User Story and Description)
 - The full Task Breakdown list and which specific task number was requested
 - Any referenced files, URLs, or examples (Technical Notes)
@@ -111,7 +113,7 @@ Work through these checks. Fix gaps before writing the document.
 
 ### Step 4 — Write the document
 
-Save to `docs/planning/{feature-name}/tasks/task{N}/planning.md`. Create directories as needed.
+Save to `docs/planning/{issue-dir}/tasks/task{N}/planning.md`. Create directories as needed.
 
 Use this structure exactly:
 
@@ -228,7 +230,7 @@ All test method names must follow `shouldDoXWhenY()` style:
 
 You are done when:
 
-1. The document is saved to `docs/planning/{feature-name}/tasks/task{N}/planning.md`
+1. The document is saved to `docs/planning/{issue-dir}/tasks/task{N}/planning.md`
 2. All four self-validation checks passed before you wrote it
 3. Every acceptance criterion relevant to this task maps to a phase in the document
 

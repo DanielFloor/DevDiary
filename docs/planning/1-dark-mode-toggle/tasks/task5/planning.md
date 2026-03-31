@@ -74,19 +74,21 @@ action buttons, and tag chips; and to the `LinkList` anchor colour.
 **Implementation steps:**
 
 1. **`EntryCard`**:
-  - Card wrapper `bg-white rounded-lg border border-gray-200 p-5 shadow-sm` → add
-    `dark:bg-gray-800 dark:border-gray-700`
-  - Date text `text-sm font-medium text-gray-500` → add `dark:text-gray-400`
-  - Project badge `bg-indigo-50 text-indigo-700` → add `dark:bg-indigo-900/30 dark:text-indigo-300`
-  - Content excerpt `text-sm text-gray-700 whitespace-pre-wrap` → add `dark:text-gray-300`
-  - Edit button `text-xs text-gray-500 hover:text-indigo-600 hover:bg-indigo-50` → add
-    `dark:text-gray-400 dark:hover:text-indigo-400 dark:hover:bg-indigo-900/20`
-  - Delete button `text-xs text-gray-500 hover:text-red-600 hover:bg-red-50` → add
-    `dark:text-gray-400 dark:hover:bg-red-900/20`
-  - Tag chips `bg-gray-100 text-gray-600` → add `dark:bg-gray-700 dark:text-gray-300`
+
+- Card wrapper `bg-white rounded-lg border border-gray-200 p-5 shadow-sm` → add
+  `dark:bg-gray-800 dark:border-gray-700`
+- Date text `text-sm font-medium text-gray-500` → add `dark:text-gray-400`
+- Project badge `bg-indigo-50 text-indigo-700` → add `dark:bg-indigo-900/30 dark:text-indigo-300`
+- Content excerpt `text-sm text-gray-700 whitespace-pre-wrap` → add `dark:text-gray-300`
+- Edit button `text-xs text-gray-500 hover:text-indigo-600 hover:bg-indigo-50` → add
+  `dark:text-gray-400 dark:hover:text-indigo-400 dark:hover:bg-indigo-900/20`
+- Delete button `text-xs text-gray-500 hover:text-red-600 hover:bg-red-50` → add
+  `dark:text-gray-400 dark:hover:bg-red-900/20`
+- Tag chips `bg-gray-100 text-gray-600` → add `dark:bg-gray-700 dark:text-gray-300`
 
 2. **`LinkList`**:
-  - Anchor `text-sm text-blue-600 hover:underline break-all` → add `dark:text-blue-400`
+
+- Anchor `text-sm text-blue-600 hover:underline break-all` → add `dark:text-blue-400`
 
 **Validation rules:**
 None beyond framework defaults.
@@ -116,11 +118,12 @@ record in `MoodBadge/index.tsx`.
 **Implementation steps:**
 
 1. Update `moodConfig` as follows (append dark variants to each `className`):
-  - `GREAT`: `bg-green-100 text-green-800` → add `dark:bg-green-900/30 dark:text-green-400`
-  - `GOOD`: `bg-blue-100 text-blue-800` → add `dark:bg-blue-900/30 dark:text-blue-400`
-  - `NEUTRAL`: `bg-gray-100 text-gray-700` → add `dark:bg-gray-700 dark:text-gray-300`
-  - `TIRED`: `bg-yellow-100 text-yellow-800` → add `dark:bg-yellow-900/30 dark:text-yellow-400`
-  - `FRUSTRATED`: `bg-red-100 text-red-800` → add `dark:bg-red-900/30 dark:text-red-400`
+
+- `GREAT`: `bg-green-100 text-green-800` → add `dark:bg-green-900/30 dark:text-green-400`
+- `GOOD`: `bg-blue-100 text-blue-800` → add `dark:bg-blue-900/30 dark:text-blue-400`
+- `NEUTRAL`: `bg-gray-100 text-gray-700` → add `dark:bg-gray-700 dark:text-gray-300`
+- `TIRED`: `bg-yellow-100 text-yellow-800` → add `dark:bg-yellow-900/30 dark:text-yellow-400`
+- `FRUSTRATED`: `bg-red-100 text-red-800` → add `dark:bg-red-900/30 dark:text-red-400`
 
 **Validation rules:**
 None beyond framework defaults.
@@ -153,29 +156,31 @@ panel, and option items.
 **Implementation steps:**
 
 1. **`FilterPanel`**:
-  - Form wrapper `bg-white rounded-lg border border-gray-200 p-4 space-y-4` → add
-    `dark:bg-gray-800 dark:border-gray-700`
-  - Section heading `text-sm font-semibold text-gray-700 uppercase tracking-wide` → add `dark:text-gray-300`
-  - Project/Tags labels `text-xs text-gray-500` → add `dark:text-gray-400`
-  - From/To labels `text-xs text-gray-500` → add `dark:text-gray-400`
-  - Date inputs `border border-gray-300 rounded px-3 py-1.5 text-sm` → add
-    `dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100`
-  - Apply button `bg-indigo-600 text-white` — no change needed
-  - Clear button `bg-gray-100 text-gray-700` → add `dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600`
+
+- Form wrapper `bg-white rounded-lg border border-gray-200 p-4 space-y-4` → add
+  `dark:bg-gray-800 dark:border-gray-700`
+- Section heading `text-sm font-semibold text-gray-700 uppercase tracking-wide` → add `dark:text-gray-300`
+- Project/Tags labels `text-xs text-gray-500` → add `dark:text-gray-400`
+- From/To labels `text-xs text-gray-500` → add `dark:text-gray-400`
+- Date inputs `border border-gray-300 rounded px-3 py-1.5 text-sm` → add
+  `dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100`
+- Apply button `bg-indigo-600 text-white` — no change needed
+- Clear button `bg-gray-100 text-gray-700` → add `dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600`
 
 2. **`MultiSelectDropdown`**:
-  - Trigger button, **unselected** branch: `border-gray-300 bg-white text-gray-500` → add
-    `dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400`
-  - Trigger button, **selected** branch: `border-indigo-400 bg-indigo-50 text-indigo-700` → add
-    `dark:border-indigo-500 dark:bg-indigo-900/30 dark:text-indigo-300`
-  - Both branches share `focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors` — these need no dark
-    variant
-  - Dropdown panel `bg-white border border-gray-200 rounded-lg shadow-lg` → add `dark:bg-gray-800 dark:border-gray-700`
-  - Empty state text `text-xs text-gray-400` → add `dark:text-gray-500`
-  - Option row `hover:bg-gray-50 cursor-pointer` → add `dark:hover:bg-gray-700`
-  - Checked label `text-indigo-700 font-medium` → add `dark:text-indigo-300`
-  - Unchecked label `text-gray-700` → add `dark:text-gray-300`
-  - `accent-indigo-600` on checkbox — no dark variant needed
+
+- Trigger button, **unselected** branch: `border-gray-300 bg-white text-gray-500` → add
+  `dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400`
+- Trigger button, **selected** branch: `border-indigo-400 bg-indigo-50 text-indigo-700` → add
+  `dark:border-indigo-500 dark:bg-indigo-900/30 dark:text-indigo-300`
+- Both branches share `focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors` — these need no dark
+  variant
+- Dropdown panel `bg-white border border-gray-200 rounded-lg shadow-lg` → add `dark:bg-gray-800 dark:border-gray-700`
+- Empty state text `text-xs text-gray-400` → add `dark:text-gray-500`
+- Option row `hover:bg-gray-50 cursor-pointer` → add `dark:hover:bg-gray-700`
+- Checked label `text-indigo-700 font-medium` → add `dark:text-indigo-300`
+- Unchecked label `text-gray-700` → add `dark:text-gray-300`
+- `accent-indigo-600` on checkbox — no dark variant needed
 
 **Validation rules:**
 None beyond framework defaults.

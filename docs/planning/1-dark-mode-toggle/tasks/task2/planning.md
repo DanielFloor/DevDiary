@@ -88,15 +88,18 @@ management.
    b. `useEffect(() => { document.documentElement.classList.toggle('dark', theme === 'dark') }, [])`
    — syncs the initial class on first mount.
    c. Implement `toggleTheme`:
-  - Compute `next = theme === 'light' ? 'dark' : 'light'`.
-  - Call `setTheme(next)`.
-  - `document.documentElement.classList.toggle('dark', next === 'dark')`.
-  - `try { localStorage.setItem('theme', next) } catch { /* ignore */ }`.
-    d. Return `<ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>`.
+
+- Compute `next = theme === 'light' ? 'dark' : 'light'`.
+- Call `setTheme(next)`.
+- `document.documentElement.classList.toggle('dark', next === 'dark')`.
+- `try { localStorage.setItem('theme', next) } catch { /* ignore */ }`.
+  d. Return `<ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>`.
+
 6. Implement `export function useTheme(): ThemeContextValue`:
-  - `const ctx = useContext(ThemeContext)`.
-  - `if (!ctx) throw new Error('useTheme must be used inside ThemeProvider')`.
-  - `return ctx`.
+
+- `const ctx = useContext(ThemeContext)`.
+- `if (!ctx) throw new Error('useTheme must be used inside ThemeProvider')`.
+- `return ctx`.
 
 **Validation rules:**
 
