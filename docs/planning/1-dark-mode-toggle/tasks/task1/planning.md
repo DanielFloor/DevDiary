@@ -1,4 +1,4 @@
-lap# Task 1 — Configure Tailwind Dark Mode and CSS Variables: Implementation Plan
+# Task 1 — Configure Tailwind Dark Mode and CSS Variables: Implementation Plan
 
 ## Task Overview
 
