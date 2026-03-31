@@ -1,8 +1,10 @@
 # 📓 DevDiary
 
-Personal developer changelog / diary app. Log what you worked on each day, tag entries by project, search by content, and filter by date range, project, or tag.
+Personal developer changelog / diary app. Log what you worked on each day, tag entries by project, search by content,
+and filter by date range, project, or tag.
 
-Built with **Spring Boot** (Java backend) + **React + Vite** (TypeScript frontend), and used as a live demo app for **GitHub Copilot** and **Claude Code** presentations.
+Built with **Spring Boot** (Java backend) + **React + Vite** (TypeScript frontend), and used as a live demo app for *
+*GitHub Copilot** and **Claude Code** presentations.
 
 ---
 
@@ -20,12 +22,12 @@ Built with **Spring Boot** (Java backend) + **React + Vite** (TypeScript fronten
 
 ### Prerequisites
 
-| Tool | Version |
-|---|---|
-| Java | 21+ |
-| Maven | 3.9+ |
-| Node.js | 20+ |
-| pnpm | 9+ (or npm) |
+| Tool    | Version     |
+|---------|-------------|
+| Java    | 21+         |
+| Maven   | 3.9+        |
+| Node.js | 20+         |
+| pnpm    | 9+ (or npm) |
 
 ### 1 — Backend
 
@@ -86,27 +88,29 @@ DevDiary/
 
 ---
 
-
 ## Working with GitHub Copilot
 
-This repo is set up as a demonstration of an **AI-assisted development workflow** using GitHub Copilot in agent mode. The `.github/` folder contains everything Copilot needs to work effectively on this codebase.
+This repo is set up as a demonstration of an **AI-assisted development workflow** using GitHub Copilot in agent mode.
+The `.github/` folder contains everything Copilot needs to work effectively on this codebase.
 
 ### Workspace Context — `copilot-instructions.md`
 
-`.github/copilot-instructions.md` gives Copilot a full picture of the project: stack, architecture, data model, API surface, coding conventions, and common gotchas. Copilot reads this automatically in every conversation, so you never have to re-explain the project.
+`.github/copilot-instructions.md` gives Copilot a full picture of the project: stack, architecture, data model, API
+surface, coding conventions, and common gotchas. Copilot reads this automatically in every conversation, so you never
+have to re-explain the project.
 
 ### Custom Agents
 
 Defined in `.github/agents/` — each agent has a focused role in the development lifecycle:
 
-| Agent | Role |
-|---|---|
-| **Plan** | Researches a GitHub issue and produces a detailed implementation plan |
+| Agent              | Role                                                                      |
+|--------------------|---------------------------------------------------------------------------|
+| **Plan**           | Researches a GitHub issue and produces a detailed implementation plan     |
 | **Implementation** | Implements a feature from a plan document; hands off to Testing when done |
-| **Refinement** | Drafts well-structured GitHub issues in User Story format |
-| **Review** | Performs a code review against issue requirements and best practices |
-| **Testing** | Writes tests targeting ≥80% coverage on new/modified files |
-| **Task Planning** | Breaks work into an ordered task list for a given feature |
+| **Refinement**     | Drafts well-structured GitHub issues in User Story format                 |
+| **Review**         | Performs a code review against issue requirements and best practices      |
+| **Testing**        | Writes tests targeting ≥80% coverage on new/modified files                |
+| **Task Planning**  | Breaks work into an ordered task list for a given feature                 |
 
 **Typical flow:**
 
@@ -118,22 +122,22 @@ Refinement → Plan → Implementation → Testing → Review
 
 Stored in `.github/prompts/` — attach them in Copilot Chat via `#` to run a structured task:
 
-| Prompt | Purpose |
-|---|---|
-| `generate-plan.prompt.md` | Research a GitHub issue and generate an implementation plan |
-| `execute-plan.prompt.md` | Execute an existing implementation plan |
-| `generate-test-plan.prompt.md` | Generate a test plan for a feature |
-| `generate-code-review-document.prompt.md` | Produce a structured code review document |
+| Prompt                                    | Purpose                                                     |
+|-------------------------------------------|-------------------------------------------------------------|
+| `generate-plan.prompt.md`                 | Research a GitHub issue and generate an implementation plan |
+| `execute-plan.prompt.md`                  | Execute an existing implementation plan                     |
+| `generate-test-plan.prompt.md`            | Generate a test plan for a feature                          |
+| `generate-code-review-document.prompt.md` | Produce a structured code review document                   |
 
 ### Skills
 
 Stored in `.github/skills/` — Copilot automatically invokes these for matching tasks:
 
-| Skill | Triggered when… |
-|---|---|
-| `issue-draft-template` | Asked to draft or create a GitHub issue |
+| Skill                    | Triggered when…                                    |
+|--------------------------|----------------------------------------------------|
+| `issue-draft-template`   | Asked to draft or create a GitHub issue            |
 | `github-issue-publisher` | Asked to publish an approved issue draft to GitHub |
-| `skill-creator` | Asked to create, edit, or evaluate a skill |
+| `skill-creator`          | Asked to create, edit, or evaluate a skill         |
 
 ### Example: adding a new feature with Copilot
 
@@ -146,7 +150,8 @@ Stored in `.github/skills/` — Copilot automatically invokes these for matching
 6. Ask the Review agent to review the changes against the issue requirements
 ```
 
-All context about the codebase — entities, API patterns, frontend conventions — is already in `copilot-instructions.md`, so each agent starts with full project awareness.
+All context about the codebase — entities, API patterns, frontend conventions — is already in `copilot-instructions.md`,
+so each agent starts with full project awareness.
 
 ---
 
@@ -160,10 +165,10 @@ Start here: [Architecture documentation](docs/arc42/index.md)
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Backend | Spring Boot 3, Java 21, Spring Data JPA, Hibernate |
-| Database | SQLite (file-based, no server required) |
-| Frontend | React 18, TypeScript, Vite, Axios |
-| UI | shadcn/ui (Radix UI primitives) + Tailwind CSS |
-| Routing | React Router v6 |
+| Layer    | Technology                                         |
+|----------|----------------------------------------------------|
+| Backend  | Spring Boot 3, Java 21, Spring Data JPA, Hibernate |
+| Database | SQLite (file-based, no server required)            |
+| Frontend | React 18, TypeScript, Vite, Axios                  |
+| UI       | shadcn/ui (Radix UI primitives) + Tailwind CSS     |
+| Routing  | React Router v6                                    |

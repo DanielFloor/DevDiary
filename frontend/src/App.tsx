@@ -21,7 +21,7 @@ function App() {
                 <NavLink
                   to="/manage/projects"
                   className={({ isActive }) =>
-                    isActive ? 'text-indigo-600 font-medium' : 'hover:text-indigo-600 transition-colors'
+                    isActive ? 'text-indigo-600 dark:text-indigo-400 font-medium' : 'hover:text-indigo-600 transition-colors'
                   }
                 >
                   Projects
@@ -29,7 +29,7 @@ function App() {
                 <NavLink
                   to="/manage/tags"
                   className={({ isActive }) =>
-                    isActive ? 'text-indigo-600 font-medium' : 'hover:text-indigo-600 transition-colors'
+                    isActive ? 'text-indigo-600 dark:text-indigo-400 font-medium' : 'hover:text-indigo-600 transition-colors'
                   }
                 >
                   Tags

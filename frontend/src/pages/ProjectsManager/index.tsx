@@ -114,7 +114,7 @@ export default function ProjectsManager() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => toggleStatus(p)}
-                      className="text-xs text-amber-600 hover:text-amber-800 px-2 py-1 rounded hover:bg-amber-50 transition-colors"
+                      className="text-xs text-amber-600 hover:text-amber-800 px-2 py-1 rounded hover:bg-amber-50 transition-colors dark:hover:bg-amber-900/20"
                     >
                       Archive
                     </button>
@@ -146,7 +146,7 @@ export default function ProjectsManager() {
                     <div className="flex gap-2">
                       <button
                         onClick={() => toggleStatus(p)}
-                        className="text-xs text-green-600 hover:text-green-800 px-2 py-1 rounded hover:bg-green-50 transition-colors"
+                        className="text-xs text-green-600 hover:text-green-800 px-2 py-1 rounded hover:bg-green-50 transition-colors dark:hover:bg-green-900/20"
                       >
                         Reactivate
                       </button>
