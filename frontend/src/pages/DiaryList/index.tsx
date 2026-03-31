@@ -59,7 +59,7 @@ export default function DiaryList() {
     <div>
       {/* Top bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
-        <h2 className="text-xl font-semibold text-gray-800">All Entries</h2>
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">All Entries</h2>
         <div className="flex gap-2">
           <form onSubmit={handleSearch} className="flex gap-2">
             <input
@@ -67,11 +67,11 @@ export default function DiaryList() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search entries…"
-              className="border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
             />
             <button
               type="submit"
-              className="bg-gray-100 text-gray-700 text-sm rounded px-3 py-1.5 hover:bg-gray-200 transition-colors"
+              className="bg-gray-100 text-gray-700 text-sm rounded px-3 py-1.5 hover:bg-gray-200 transition-colors dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
             >
               Search
             </button>
@@ -93,10 +93,10 @@ export default function DiaryList() {
 
         {/* Entry list */}
         <section className="flex-1 space-y-4">
-          {loading && <p className="text-gray-500 text-sm">Loading…</p>}
+          {loading && <p className="text-gray-500 text-sm dark:text-gray-400">Loading…</p>}
           {error && <p className="text-red-600 text-sm">{error}</p>}
           {!loading && !error && entries.length === 0 && (
-            <p className="text-gray-500 text-sm">No entries yet. Create your first one!</p>
+            <p className="text-gray-500 text-sm dark:text-gray-400">No entries yet. Create your first one!</p>
           )}
           {entries.map((entry) => (
             <EntryCard key={entry.id} entry={entry} onDelete={handleDelete} />
