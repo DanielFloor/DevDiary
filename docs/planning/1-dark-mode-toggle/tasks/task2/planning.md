@@ -169,7 +169,7 @@ All tests are unit tests against `ThemeContext.tsx`:
 - [ ] `window.matchMedia` is guarded against being undefined
 - [ ] `useState(getInitialTheme)` uses lazy initialiser (function reference, not call)
 - [ ] `toggleTheme()` flips state, updates `document.documentElement.classList`, and persists to `localStorage`
-- [ ] `useEffect([], [])` on mount ensures initial `dark` class is synced to DOM
+- [ ] `useEffect` with empty dependency array `[]` on mount ensures initial `dark` class is synced to DOM
 - [ ] `useTheme()` throws a descriptive error if called outside `<ThemeProvider>`
 - [ ] `pnpm build` passes with no errors
 
