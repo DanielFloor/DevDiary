@@ -65,11 +65,11 @@ export default function ProjectsManager() {
       <div className="flex items-center gap-3 mb-6">
         <button
           onClick={() => navigate('/')}
-          className="text-sm text-gray-500 hover:text-indigo-600 transition-colors"
+          className="text-sm text-gray-500 hover:text-indigo-600 transition-colors dark:text-gray-400"
         >
           ← Back
         </button>
-        <h2 className="text-xl font-semibold text-gray-800">Manage Projects</h2>
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">Manage Projects</h2>
       </div>
 
       {error && <p className="mb-4 text-red-600 text-sm">{error}</p>}
@@ -81,7 +81,7 @@ export default function ProjectsManager() {
           value={newName}
           onChange={(e) => setNewName(e.target.value)}
           placeholder="New project name…"
-          className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
         />
         <button
           type="submit"
@@ -93,34 +93,34 @@ export default function ProjectsManager() {
       </form>
 
       {loading ? (
-        <p className="text-gray-500 text-sm">Loading…</p>
+        <p className="text-gray-500 text-sm dark:text-gray-400">Loading…</p>
       ) : (
         <>
           {/* Active projects */}
           <section className="mb-6">
-            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 dark:text-gray-400">
               Active ({active.length})
             </h3>
             {active.length === 0 && (
-              <p className="text-sm text-gray-400">No active projects.</p>
+              <p className="text-sm text-gray-400 dark:text-gray-500">No active projects.</p>
             )}
             <ul className="space-y-2">
               {active.map((p) => (
                 <li
                   key={p.id}
-                  className="flex items-center justify-between bg-white border border-gray-200 rounded-lg px-4 py-3"
+                  className="flex items-center justify-between bg-white border border-gray-200 rounded-lg px-4 py-3 dark:bg-gray-800 dark:border-gray-700"
                 >
-                  <span className="text-sm font-medium text-gray-800">{p.name}</span>
+                  <span className="text-sm font-medium text-gray-800 dark:text-gray-100">{p.name}</span>
                   <div className="flex gap-2">
                     <button
                       onClick={() => toggleStatus(p)}
-                      className="text-xs text-amber-600 hover:text-amber-800 px-2 py-1 rounded hover:bg-amber-50 transition-colors"
+                      className="text-xs text-amber-600 hover:text-amber-800 px-2 py-1 rounded hover:bg-amber-50 transition-colors dark:hover:bg-amber-900/20"
                     >
                       Archive
                     </button>
                     <button
                       onClick={() => handleDelete(p)}
-                      className="text-xs text-gray-400 hover:text-red-600 px-2 py-1 rounded hover:bg-red-50 transition-colors"
+                      className="text-xs text-gray-400 hover:text-red-600 px-2 py-1 rounded hover:bg-red-50 transition-colors dark:text-gray-500 dark:hover:bg-red-900/20"
                     >
                       Delete
                     </button>
@@ -133,26 +133,26 @@ export default function ProjectsManager() {
           {/* Archived projects */}
           {archived.length > 0 && (
             <section>
-              <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+              <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 dark:text-gray-400">
                 Archived ({archived.length})
               </h3>
               <ul className="space-y-2">
                 {archived.map((p) => (
                   <li
                     key={p.id}
-                    className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 opacity-70"
+                    className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 opacity-70 dark:bg-gray-900 dark:border-gray-700"
                   >
-                    <span className="text-sm text-gray-500">{p.name}</span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">{p.name}</span>
                     <div className="flex gap-2">
                       <button
                         onClick={() => toggleStatus(p)}
-                        className="text-xs text-green-600 hover:text-green-800 px-2 py-1 rounded hover:bg-green-50 transition-colors"
+                        className="text-xs text-green-600 hover:text-green-800 px-2 py-1 rounded hover:bg-green-50 transition-colors dark:hover:bg-green-900/20"
                       >
                         Reactivate
                       </button>
                       <button
                         onClick={() => handleDelete(p)}
-                        className="text-xs text-gray-400 hover:text-red-600 px-2 py-1 rounded hover:bg-red-50 transition-colors"
+                        className="text-xs text-gray-400 hover:text-red-600 px-2 py-1 rounded hover:bg-red-50 transition-colors dark:text-gray-500 dark:hover:bg-red-900/20"
                       >
                         Delete
                       </button>

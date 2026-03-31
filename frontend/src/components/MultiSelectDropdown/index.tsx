@@ -54,8 +54,8 @@ export default function MultiSelectDropdown({
         onClick={() => setOpen((o) => !o)}
         className={`w-full flex items-center justify-between border rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors ${
           selected.length > 0
-            ? 'border-indigo-400 bg-indigo-50 text-indigo-700'
-            : 'border-gray-300 bg-white text-gray-500'
+            ? 'border-indigo-400 bg-indigo-50 text-indigo-700 dark:border-indigo-500 dark:bg-indigo-900/30 dark:text-indigo-300'
+            : 'border-gray-300 bg-white text-gray-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400'
         }`}
       >
         <span className="truncate">{label}</span>
@@ -70,16 +70,16 @@ export default function MultiSelectDropdown({
       </button>
 
       {open && (
-        <div className="absolute z-20 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg max-h-52 overflow-y-auto">
+        <div className="absolute z-20 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg max-h-52 overflow-y-auto dark:bg-gray-800 dark:border-gray-700">
           {options.length === 0 ? (
-            <p className="px-3 py-2 text-xs text-gray-400">No options available.</p>
+            <p className="px-3 py-2 text-xs text-gray-400 dark:text-gray-500">No options available.</p>
           ) : (
             options.map((opt) => {
               const checked = selected.includes(opt.value)
               return (
                 <label
                   key={opt.value}
-                  className="flex items-center gap-2 px-3 py-2 hover:bg-gray-50 cursor-pointer text-sm"
+                  className="flex items-center gap-2 px-3 py-2 hover:bg-gray-50 cursor-pointer text-sm dark:hover:bg-gray-700"
                 >
                   <input
                     type="checkbox"
@@ -87,7 +87,7 @@ export default function MultiSelectDropdown({
                     onChange={() => toggle(opt.value)}
                     className="accent-indigo-600"
                   />
-                  <span className={checked ? 'text-indigo-700 font-medium' : 'text-gray-700'}>
+                  <span className={checked ? 'text-indigo-700 font-medium dark:text-indigo-300' : 'text-gray-700 dark:text-gray-300'}>
                     {opt.label}
                   </span>
                 </label>

@@ -16,13 +16,13 @@ export default function EntryCard({ entry, onDelete }: EntryCardProps) {
       : entry.content
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
       {/* Header row */}
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-3 flex-wrap">
-          <span className="text-sm font-medium text-gray-500">{entry.date}</span>
+          <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{entry.date}</span>
           {entry.project && (
-            <span className="inline-flex items-center px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 text-xs font-medium">
+            <span className="inline-flex items-center px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 text-xs font-medium dark:bg-indigo-900/30 dark:text-indigo-300">
               {entry.project}
             </span>
           )}
@@ -31,13 +31,13 @@ export default function EntryCard({ entry, onDelete }: EntryCardProps) {
         <div className="flex gap-2 shrink-0">
           <button
             onClick={() => navigate(`/entries/${entry.id}/edit`)}
-            className="text-xs text-gray-500 hover:text-indigo-600 px-2 py-1 rounded hover:bg-indigo-50 transition-colors"
+            className="text-xs text-gray-500 hover:text-indigo-600 px-2 py-1 rounded hover:bg-indigo-50 transition-colors dark:text-gray-400 dark:hover:text-indigo-400 dark:hover:bg-indigo-900/20"
           >
             Edit
           </button>
           <button
             onClick={() => entry.id != null && onDelete(entry.id)}
-            className="text-xs text-gray-500 hover:text-red-600 px-2 py-1 rounded hover:bg-red-50 transition-colors"
+            className="text-xs text-gray-500 hover:text-red-600 px-2 py-1 rounded hover:bg-red-50 transition-colors dark:text-gray-400 dark:hover:bg-red-900/20"
           >
             Delete
           </button>
@@ -45,7 +45,7 @@ export default function EntryCard({ entry, onDelete }: EntryCardProps) {
       </div>
 
       {/* Content excerpt */}
-      {excerpt && <p className="mt-3 text-sm text-gray-700 whitespace-pre-wrap">{excerpt}</p>}
+      {excerpt && <p className="mt-3 text-sm text-gray-700 whitespace-pre-wrap dark:text-gray-300">{excerpt}</p>}
 
       {/* Tags */}
       {entry.tags && entry.tags.length > 0 && (
@@ -53,7 +53,7 @@ export default function EntryCard({ entry, onDelete }: EntryCardProps) {
           {entry.tags.map((tag) => (
             <span
               key={tag.id ?? tag.name}
-              className="inline-flex items-center px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 text-xs"
+              className="inline-flex items-center px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 text-xs dark:bg-gray-700 dark:text-gray-300"
             >
               #{tag.name}
             </span>

@@ -1,22 +1,22 @@
 ---
 name: Review Agent
 description: Perform comprehensive code review against GitHub issue requirements and best practices
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'github/*', 'agent', 'todo']
+tools: [ 'insert_edit_into_file', 'replace_string_in_file', 'create_file', 'apply_patch', 'run_in_terminal', 'get_terminal_output', 'get_errors', 'show_content', 'open_file', 'list_dir', 'read_file', 'file_search', 'grep_search', 'validate_cves', 'run_subagent', 'semantic_search' ]
 handoffs:
   - label: Fix Code Issues
-    agent: Implementation Agent
+    agent: implementation
     prompt: The code review found issues that need to be fixed. Please address the following from the review - code quality issues identified, pattern violations, missing error handling, and performance concerns. Fix all critical and major issues. Run linting checks after fixes. Then hand off back to the Test Agent to verify tests still pass.
     send: true
   - label: Improve Test Coverage
-    agent: Test Agent
+    agent: testing
     prompt: The code review found insufficient test coverage. Please address untested code paths identified in review, missing edge case tests, and missing error scenario tests. Add tests to reach the required coverage threshold and ensure all acceptance criteria have test coverage.
     send: true
   - label: Re-review After Changes
-    agent: Review Agent
+    agent: review-agent
     prompt: Changes have been made based on the previous review feedback. Please re-review the code to verify all issues have been addressed and provide an updated verdict.
     send: false
   - label: Create Pull Request
-    agent: agent
+    agent: Agent
     prompt: The code review has been approved. Create a pull request with a clear title summarizing the change, description linking to the GitHub issue, summary of changes made, and test coverage information.
     send: true
 ---
@@ -31,7 +31,7 @@ Perform a comprehensive code review of implemented features. Verify the implemen
 
 You will receive:
 1. **GitHub Issue** - Contains description, acceptance criteria, and requirements
-2. **Implementation Plan** (`IMPLEMENTATION_PLAN_*.md`) - Contains design decisions and implementation details
+2. **Task summaries** (`docs/planning/{issue-dir}/tasks/task*/summary.md`) - Describe what was implemented, what contracts were introduced, and any known risks per task
 3. **Code Changes** - The files created/modified by the Implementation Agent
 4. **Tests** - The test files created by the Test Agent
 
@@ -45,7 +45,7 @@ You will receive:
   - Acceptance criteria (AC)
   - Any requirements from comments
   - Out-of-scope items mentioned
-- Read the **Implementation Plan** for design decisions
+- Read all **task summary files** (`docs/planning/{issue-dir}/tasks/task*/summary.md`) for implementation context, design decisions, and known risks
 - Create review checklist using `#tool:todo`
 
 ### Step 2: Verify Acceptance Criteria Coverage

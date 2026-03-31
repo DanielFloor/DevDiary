@@ -139,40 +139,40 @@ export default function DiaryEntryPage() {
     ? [{ id: undefined, name: form.project, status: 'ARCHIVED' as const }, ...activeProjects]
     : activeProjects
 
-  if (loading) return <p className="text-gray-500 text-sm">Loading…</p>
+  if (loading) return <p className="text-gray-500 text-sm dark:text-gray-400">Loading…</p>
 
   return (
     <div className="max-w-2xl">
       <div className="flex items-center gap-3 mb-6">
         <button
           onClick={() => navigate('/')}
-          className="text-sm text-gray-500 hover:text-indigo-600 transition-colors"
+          className="text-sm text-gray-500 hover:text-indigo-600 transition-colors dark:text-gray-400"
         >
           ← Back
         </button>
-        <h2 className="text-xl font-semibold text-gray-800">
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
           {isEdit ? 'Edit Entry' : 'New Entry'}
         </h2>
       </div>
 
       {error && <p className="mb-4 text-red-600 text-sm">{error}</p>}
 
-      <form onSubmit={handleSubmit} className="bg-white rounded-lg border border-gray-200 p-6 space-y-5">
+      <form onSubmit={handleSubmit} className="bg-white rounded-lg border border-gray-200 p-6 space-y-5 dark:bg-gray-900 dark:border-gray-700">
         {/* Date + Project row */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-medium text-gray-600 mb-1">Date *</label>
+            <label className="block text-xs font-medium text-gray-600 mb-1 dark:text-gray-400">Date *</label>
             <input
               type="date"
               name="date"
               value={form.date}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
             />
           </div>
           <div>
-            <label className="block text-xs font-medium text-gray-600 mb-1">
+            <label className="block text-xs font-medium text-gray-600 mb-1 dark:text-gray-400">
               Project
               <a
                 href="/manage/projects"
@@ -186,7 +186,7 @@ export default function DiaryEntryPage() {
               name="project"
               value={form.project}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
             >
               <option value="">— No project —</option>
               {projectOptions.map((p) => (
@@ -200,12 +200,12 @@ export default function DiaryEntryPage() {
 
         {/* Mood */}
         <div>
-          <label className="block text-xs font-medium text-gray-600 mb-1">Mood</label>
+          <label className="block text-xs font-medium text-gray-600 mb-1 dark:text-gray-400">Mood</label>
           <select
             name="mood"
             value={form.mood}
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
           >
             {MOODS.map((m) => (
               <option key={m} value={m}>{m}</option>
@@ -215,7 +215,7 @@ export default function DiaryEntryPage() {
 
         {/* Content */}
         <div>
-          <label className="block text-xs font-medium text-gray-600 mb-1">What did you work on? *</label>
+          <label className="block text-xs font-medium text-gray-600 mb-1 dark:text-gray-400">What did you work on? *</label>
           <textarea
             name="content"
             value={form.content}
@@ -223,13 +223,13 @@ export default function DiaryEntryPage() {
             required
             rows={8}
             placeholder="Describe what you worked on today…"
-            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-y"
+            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-y dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
           />
         </div>
 
         {/* Tags */}
         <div>
-          <label className="block text-xs font-medium text-gray-600 mb-1">
+          <label className="block text-xs font-medium text-gray-600 mb-1 dark:text-gray-400">
             Tags
             <a
               href="/manage/tags"
@@ -251,7 +251,7 @@ export default function DiaryEntryPage() {
                   className={`px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors ${
                     selected
                       ? 'bg-indigo-600 text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
                   }`}
                 >
                   #{tag.name}
@@ -281,12 +281,12 @@ export default function DiaryEntryPage() {
               onChange={(e) => setNewTagInput(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); handleAddNewTag() } }}
               placeholder="New tag name…"
-              className="flex-1 border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="flex-1 border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
             />
             <button
               type="button"
               onClick={handleAddNewTag}
-              className="bg-gray-100 text-gray-700 text-sm rounded px-3 py-1.5 hover:bg-gray-200 transition-colors"
+              className="bg-gray-100 text-gray-700 text-sm rounded px-3 py-1.5 hover:bg-gray-200 transition-colors dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
             >
               + Add tag
             </button>
@@ -296,7 +296,7 @@ export default function DiaryEntryPage() {
         {/* Links */}
         <div>
           <div className="flex items-center justify-between mb-2">
-            <label className="text-xs font-medium text-gray-600">Links</label>
+            <label className="text-xs font-medium text-gray-600 dark:text-gray-400">Links</label>
             <button type="button" onClick={addLink} className="text-xs text-indigo-600 hover:underline">
               + Add link
             </button>
@@ -309,19 +309,19 @@ export default function DiaryEntryPage() {
                   value={link.url}
                   onChange={(e) => updateLink(i, 'url', e.target.value)}
                   placeholder="https://…"
-                  className="flex-1 border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="flex-1 border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
                 />
                 <input
                   type="text"
                   value={link.label ?? ''}
                   onChange={(e) => updateLink(i, 'label', e.target.value)}
                   placeholder="Label (optional)"
-                  className="w-36 border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-36 border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
                 />
                 <button
                   type="button"
                   onClick={() => removeLink(i)}
-                  className="text-gray-400 hover:text-red-500 text-lg leading-none"
+                  className="text-gray-400 hover:text-red-500 text-lg leading-none dark:text-gray-500"
                 >
                   ×
                 </button>
@@ -342,7 +342,7 @@ export default function DiaryEntryPage() {
           <button
             type="button"
             onClick={() => navigate('/')}
-            className="bg-gray-100 text-gray-700 text-sm rounded px-5 py-2 hover:bg-gray-200 transition-colors"
+            className="bg-gray-100 text-gray-700 text-sm rounded px-5 py-2 hover:bg-gray-200 transition-colors dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
           >
             Cancel
           </button>

@@ -38,11 +38,11 @@ export default function SearchResults() {
       <div className="flex items-center gap-3 mb-6">
         <button
           onClick={() => navigate('/')}
-          className="text-sm text-gray-500 hover:text-indigo-600 transition-colors"
+          className="text-sm text-gray-500 hover:text-indigo-600 transition-colors dark:text-gray-400"
         >
           ← Back
         </button>
-        <h2 className="text-xl font-semibold text-gray-800">
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
           Search{q ? `: "${q}"` : ''}
         </h2>
       </div>
@@ -54,7 +54,7 @@ export default function SearchResults() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Refine search…"
-          className="border border-gray-300 rounded px-3 py-2 text-sm flex-1 max-w-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="border border-gray-300 rounded px-3 py-2 text-sm flex-1 max-w-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
         />
         <button
           type="submit"
@@ -65,10 +65,10 @@ export default function SearchResults() {
       </form>
 
       <div className="space-y-4">
-        {loading && <p className="text-gray-500 text-sm">Searching…</p>}
+        {loading && <p className="text-gray-500 text-sm dark:text-gray-400">Searching…</p>}
         {error && <p className="text-red-600 text-sm">{error}</p>}
         {!loading && !error && q && results.length === 0 && (
-          <p className="text-gray-500 text-sm">No results found for "{q}".</p>
+          <p className="text-gray-500 text-sm dark:text-gray-400">No results found for "{q}".</p>
         )}
         {results.map((entry) => (
           <EntryCard key={entry.id} entry={entry} onDelete={() => {}} />
