@@ -103,51 +103,42 @@ have to re-explain the project.
 
 Defined in `.github/agents/` — each agent has a focused role in the development lifecycle:
 
-| Agent              | Role                                                                      |
-|--------------------|---------------------------------------------------------------------------|
-| **Plan**           | Researches a GitHub issue and produces a detailed implementation plan     |
-| **Implementation** | Implements a feature from a plan document; hands off to Testing when done |
-| **Refinement**     | Drafts well-structured GitHub issues in User Story format                 |
-| **Review**         | Performs a code review against issue requirements and best practices      |
-| **Testing**        | Writes tests targeting ≥80% coverage on new/modified files                |
-| **Task Planning**  | Breaks work into an ordered task list for a given feature                 |
+| Agent              | Role                                                                                       |
+|--------------------|--------------------------------------------------------------------------------------------|
+| **Refinement**     | Drafts well-structured GitHub issues in User Story format                                  |
+| **Task Planning**  | Breaks work into an ordered task list for a given feature                                  |
+| **Implementation** | Implements exactly one phase from a task plan; hands off to Testing when done              |
+| **Testing**        | Writes tests targeting ≥80% coverage on new/modified files                                 |
+| **Review**         | Performs a code review against issue requirements and best practices                       |
+| **Documentation**  | Updates arc42 architecture docs and ADRs after the Review agent approves an implementation |
 
 **Typical flow:**
 
 ```
-Refinement → Plan → Implementation → Testing → Review
+Refinement → Task Planning → Implementation → Testing → Review → Documentation
 ```
-
-### Reusable Prompts
-
-Stored in `.github/prompts/` — attach them in Copilot Chat via `#` to run a structured task:
-
-| Prompt                                    | Purpose                                                     |
-|-------------------------------------------|-------------------------------------------------------------|
-| `generate-plan.prompt.md`                 | Research a GitHub issue and generate an implementation plan |
-| `execute-plan.prompt.md`                  | Execute an existing implementation plan                     |
-| `generate-test-plan.prompt.md`            | Generate a test plan for a feature                          |
-| `generate-code-review-document.prompt.md` | Produce a structured code review document                   |
 
 ### Skills
 
 Stored in `.github/skills/` — Copilot automatically invokes these for matching tasks:
 
-| Skill                    | Triggered when…                                    |
-|--------------------------|----------------------------------------------------|
-| `issue-draft-template`   | Asked to draft or create a GitHub issue            |
-| `github-issue-publisher` | Asked to publish an approved issue draft to GitHub |
-| `skill-creator`          | Asked to create, edit, or evaluate a skill         |
+| Skill                    | Triggered when…                                               |
+|--------------------------|---------------------------------------------------------------|
+| `arc42-bootstrap`        | Asked to set up arc42 architecture documentation from scratch |
+| `issue-draft-template`   | Asked to draft or create a GitHub issue                       |
+| `github-issue-publisher` | Asked to publish an approved issue draft to GitHub            |
+| `skill-creator`          | Asked to create, edit, or evaluate a skill                    |
 
 ### Example: adding a new feature with Copilot
 
 ```
 1. Ask the Refinement agent to draft a GitHub issue for the feature
 2. Publish the issue via the github-issue-publisher skill
-3. Ask the Plan agent to research the issue and write an implementation plan
-4. Ask the Implementation agent to execute the plan
-5. Ask the Testing agent to write tests based on the HANDOFF.md
+3. Ask the Task Planning agent to break the issue into an ordered task list
+4. Ask the Implementation agent to execute each task phase
+5. Ask the Testing agent to write tests based on the task summary files
 6. Ask the Review agent to review the changes against the issue requirements
+7. Ask the Documentation agent to update the arc42 docs and log any new ADRs
 ```
 
 All context about the codebase — entities, API patterns, frontend conventions — is already in `copilot-instructions.md`,

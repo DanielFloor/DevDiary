@@ -15,6 +15,14 @@ handoffs:
     agent: review-agent
     prompt: Changes have been made based on the previous review feedback. Please re-review the code to verify all issues have been addressed and provide an updated verdict.
     send: false
+  - label: Update Architecture Docs
+    agent: documentation
+    prompt: |
+      The code review has been approved. Please update the arc42 architecture documentation
+      to reflect this feature. The issue directory and all task summary.md files are in
+      docs/planning/{issue-dir}/tasks/. Use the "Arc42 chapters to update" and
+      "ADR candidates" sections of each summary as your update plan.
+    send: true
   - label: Create Pull Request
     agent: Agent
     prompt: The code review has been approved. Create a pull request with a clear title summarizing the change, description linking to the GitHub issue, summary of changes made, and test coverage information.
